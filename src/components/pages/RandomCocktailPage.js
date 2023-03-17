@@ -32,8 +32,8 @@ class RandomCocktailPage extends Component {
             <div>
                 {/*<button onClick={this.getRandom} >Get random</button>*/}
                 {
-                    this.state.cocktailData?
-                        <Cocktail cocktail={this.state.cocktailData}/>:
+                    this.state.cocktailData ?
+                        <Cocktail cocktail={this.state.cocktailData}/> :
                         <h4>{this.state.loadError}</h4>
                 }
             </div>

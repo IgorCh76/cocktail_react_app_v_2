@@ -1,18 +1,30 @@
 import React, {Component} from 'react';
 import './Navigation.css';
+import {AppContext} from "../../context/contextCreator";
 class Navigation extends Component {
+
     render() {
         return (
-            <div className={"nav"}>
-                <span className={(this.props.current==='random')?"active":""} onClick={
-                    ()=>{
-                        this.props.switchFun('random');
-                    }}>Random</span>
-                <span className={(this.props.current==='history')?"active":""} onClick={
-                    ()=>{
-                        this.props.switchFun('history');
-                    }}>History</span>
-            </div>
+            <AppContext.Consumer>
+                {value => (
+                    <div className={"nav"}>
+                        <span className={(value.current === 'random') ? "active" : ""}
+                              onClick={
+                                  ()=>{
+                                      value.switchPage('random');
+                                  }}>Random</span>
+                        <span className={(value.page ==='history') ? "active" : ""}
+                              onClick={
+                                  ()=>{
+                                value.switchPage('history');
+                                  }}>History</span>
+                        <span className={'username'}>
+                            {value.name}
+                        </span>
+                        <span className={'logout'}>Log out</span>
+                    </div>
+                )}
+            </AppContext.Consumer>
         );
     }
 }
